@@ -18,7 +18,7 @@ class ExitZoom:
 
     query = {
       'action': 'delete',
-      'transfer_email': 'itsupport@gumgum.com',
+      'transfer_email': 'test@example.com',
       'transfer_recording': True
     }
 
