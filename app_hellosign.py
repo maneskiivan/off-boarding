@@ -16,7 +16,7 @@ class ExitHS:
                           data={
                             # ACCOUNT ID OR EMAIL ADDRESS ACCEPTED TO SPECIFY TEAM MEMBER FOR REMOVAL
                             "email_address": email,
-                            "new_owner_email_address": 'imaneski@gumgum.com',
+                            "new_owner_email_address": 'test@example.com',
                           })
       response = json.loads(req.text)
       if 'team' in response.keys():
