@@ -14,7 +14,7 @@ class ExitLP:
 
     payload = json.dumps(
       {
-        "cid": 9131752,
+        "cid": 11111111,
         "provhash": lastpass_token,
         "cmd": "deluser",
         "data": {
