@@ -16,14 +16,14 @@ class ExitHS:
                           data={
                             # ACCOUNT ID OR EMAIL ADDRESS ACCEPTED TO SPECIFY TEAM MEMBER FOR REMOVAL
                             "email_address": email,
-                            "new_owner_email_address": 'test@example.com',
+                            "new_owner_email_address": 'imaneski@gumgum.com',
                           })
       response = json.loads(req.text)
       if 'team' in response.keys():
-        self.results = 'HelloSign Deleted'
+        self.results = 'HelloSign - Deleted'
       elif 'error' in response.keys():
         if response['error']['error_name'] == 'not_found':
-          self.results = 'N/A'
+          self.results = 'HelloSign - N/A'
         elif response['error']['error_msg'] == 'Unauthorized api key':
           self.results = 'Did not execute HelloSign offboarding'
     except:

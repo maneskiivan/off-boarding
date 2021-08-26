@@ -39,6 +39,6 @@ class ExitJC:
     try:
       # Delete a system user
       api_response = api_instance.systemusers_delete(self.__acc_id, content_type, accept, x_org_id=x_org_id)
-      self.results = 'JumpCloud Deleted'
+      self.results = 'JumpCloud - Deleted'
     except:
       self.results = 'Did not execute JumpCloud offboarding'

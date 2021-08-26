@@ -117,7 +117,7 @@ class ExitGsuite:
 
     try:
       results = self.__service.users().update(userKey=self.__email, body=body).execute()
-      self.results = 'G Suite Suspended'
+      self.results = 'G Suite - Suspended'
     except:
       self.results = 'Did not execute G Suite offboarding'
 
@@ -155,6 +155,6 @@ class ExitGsuite:
         }
         result = self.__gmail_service.users().settings().updateAutoForwarding(userId=self.__email, body=body).execute()
         print(result)
-        self.results = 'G Suite Email Only'
+        self.results = 'G Suite - Email Only'
     except:
       self.results = 'Did not execute G Suite offboarding'

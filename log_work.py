@@ -2,7 +2,6 @@ from __future__ import print_function
 from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 
-
 class ExitLog:
   '''Writtes a log file in the Termination logs folder in G Drive'''
   def __init__(self, email, text):

@@ -33,8 +33,8 @@ class ExitSF:
 
         offboard = sf.User.update(id, {'IsActive': False})
         if offboard == 204:
-          self.results = 'SalesForce Deactivated'
+          self.results = 'SalesForce - Deactivated'
       except:
         self.results = 'Did not execute SalesForce offboarding'
     else:
-      self.results = 'N/A'
+      self.results = 'SalesForce - N/A'

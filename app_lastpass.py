@@ -14,7 +14,7 @@ class ExitLP:
 
     payload = json.dumps(
       {
-        "cid": 11111111,
+        "cid": 9131752,
         "provhash": lastpass_token,
         "cmd": "deluser",
         "data": {
@@ -26,8 +26,8 @@ class ExitLP:
 
     response = requests.post(url, data=payload)
     if response.text == '{"status":"OK"}' or response.text == '{"status":"OK","error":"User already disabled: ' + email + '"}':
-      self.results = 'LastPass Disabled'
+      self.results = 'LastPass - Disabled'
     elif response.text == '{"status":"FAIL","error":"No such user: ' + email + '"}':
-      self.results = 'N/A'
+      self.results = 'LastPass - N/A'
     else:
       self.results = 'Did not execute LastPass offboarding'

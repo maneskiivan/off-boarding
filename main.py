@@ -21,24 +21,31 @@ def lambda_handler(event, context):
   off_user_g_suite = ExitGsuite(off_user.email, off_user.password, off_user.forwarding, off_user.forward_to_email)
   # Deletes the JumpCloud account
   off_user_jc = ExitJC(off_user.email)
+  print(off_user_jc.results)
   time.sleep(10)
   # Deletes Zoom
   off_user_zoom = ExitZoom(off_user.email)
   # Sets up email forwarding if requested
   if off_user.forwarding:
     off_user_g_suite.email_forward()
+  print(off_user_g_suite.results)
   # Deactivates the Atlassian account
   off_user.deactivate_account()
+  print(off_user.results)
   # Suspends the DropBox account
   off_user_db = ExitDB()
   off_user_db.suspend(off_user.email)
+  print(off_user_db.results)
   # Deletes the HelloSign account
   off_user_hs = ExitHS(off_user.email)
+  print(off_user_hs.results)
   # Disables LastPass
   off_user_lp = ExitLP(off_user.email)
+  print(off_user_lp.results)
   # Deactivates the SalesForce account
   off_user_sf = ExitSF(off_user.email)
-
+  print(off_user_sf.results)
+  
   # Logging the work
   log_work_text = f'''
   The following actions have been taken:
@@ -46,7 +53,6 @@ def lambda_handler(event, context):
   {off_user_jc.results}
   {off_user.results}
   {off_user_zoom.results}
-  Slack Deactivated
   {off_user_hs.results}
   {off_user_lp.results}
   {off_user_db.results}

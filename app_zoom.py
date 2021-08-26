@@ -18,7 +18,7 @@ class ExitZoom:
 
     query = {
       'action': 'delete',
-      'transfer_email': 'test@example.com',
+      'transfer_email': 'itsupport@gumgum.com',
       'transfer_recording': True
     }
 
@@ -29,8 +29,8 @@ class ExitZoom:
     )
 
     if str(response) == '<Response [204]>':
-      self.results = 'Zoom Deleted'
+      self.results = 'Zoom - Deleted'
     elif str(response) == '<Response [404]>':
-      self.results = 'N/A'
+      self.results = 'Zoom - N/A'
     else:
       self.results = 'Did not execute Zoom offboarding'

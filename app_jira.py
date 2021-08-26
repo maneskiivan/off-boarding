@@ -43,6 +43,7 @@ class ExitJira:
     )
 
     response_dict = response.json()
+
     # Adding the values from the custom fields to the appropriate variables
     self.email = response_dict['fields']['customfield_13906']
     self.forwarding = False
@@ -84,7 +85,7 @@ class ExitJira:
     )
 
     response_dict = response.json()
-    if response_dict:
+    if response_dict and response_dict[0]['accountId'] != '557058:0a52a8d2-54f8-4375-a679-a1f639f7ccbd':
       return response_dict[0]['accountId']
     else:
       return None
@@ -92,6 +93,7 @@ class ExitJira:
   def deactivate_account(self):
     '''Deactivates the user account in Atlassian'''
     account_id = self.__get_user_id()
+
     url = f"https://api.atlassian.com/users/{account_id}/manage/lifecycle/disable"
 
     headers = {
@@ -107,11 +109,11 @@ class ExitJira:
           headers=headers
         )
         print(response.text)
-        self.results = 'Jira Deactivated'
+        self.results = 'Jira - Deactivated'
       except:
         self.results = 'Did not execute Jira offboarding'
     else:
-      self.results = 'Jira N/A'
+      self.results = 'Jira - N/A'
 
   def update_ticket(self, text):
     '''Comments in the Jira ticket'''
@@ -122,17 +124,14 @@ class ExitJira:
       "Content-Type": "application/json"
     }
 
-    try:
-      payload = json.dumps({
-        "body": text
-      })
 
-      response = requests.request(
-        "POST",
-        url,
-        data=payload,
-        headers=headers,
-        auth=self.__auth
+    payload = json.dumps({"body": text})
+
+    response = requests.request(
+      "POST",
+      url,
+      data=payload,
+      headers=headers,
+      auth=self.__auth
       )
-    except:
-      pass
+    print(response)
